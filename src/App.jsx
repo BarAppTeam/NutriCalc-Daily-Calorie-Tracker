@@ -4,8 +4,8 @@ import ProductForm from './components/products/ProductForm';
 import ProductList from './components/products/ProductList';
 import TotalCalories from './components/calories/TotalCalories';
 import logo from "./assets/logo.jpeg"
-import './App.css';
-import './antd-custom.css';
+import './styles/App.css';
+import './styles/antd-custom.css';
 
 const { Header, Content, Footer } = Layout;
 

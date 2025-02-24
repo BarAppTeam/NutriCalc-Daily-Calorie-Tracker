@@ -3,6 +3,7 @@ import { List, Empty } from 'antd';
 import { ShoppingOutlined } from '@ant-design/icons';
 import ProductItem from './ProductItem';
 import PropTypes from 'prop-types';
+import './ProductList.css';
 
 export default function ProductList({ products, onEdit, onDelete }) {
     return (
@@ -19,7 +20,7 @@ export default function ProductList({ products, onEdit, onDelete }) {
             dataSource={products}
             locale={{
                 emptyText: <Empty
-                    image={<ShoppingOutlined style={{ fontSize: 64 }} />}
+                    image={<ShoppingOutlined className="empty-icon" />}
                     description="No products added yet. Start by adding your first product!"
                 />
             }}

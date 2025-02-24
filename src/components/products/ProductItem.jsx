@@ -1,8 +1,8 @@
 import React from 'react';
 import { Card, Button, Typography, Space } from 'antd';
 import PropTypes from 'prop-types';
-import StringBuilder from '../../../utils/StringBuilder';
-import './ProductItem.css';
+import StringBuilder from '../../utils/StringBuilder';
+import '../../styles/components/products/ProductItem.css';
 
 const { Text } = Typography;
 

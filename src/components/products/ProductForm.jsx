@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Input, Button, InputNumber, Card } from 'antd';
 import PropTypes from 'prop-types';
+import './ProductForm.css';
 
 function ProductForm({ onAdd }) {
   const [form] = Form.useForm();
@@ -44,7 +45,7 @@ function ProductForm({ onAdd }) {
             min={0}
             step={0.1}
             placeholder="Enter amount in kg"
-            style={{ width: '100%' }}
+            className="product-form-input"
           />
         </Form.Item>
 
@@ -57,7 +58,7 @@ function ProductForm({ onAdd }) {
             min={0}
             step={1}
             placeholder="Enter calories per kg"
-            style={{ width: '100%' }}
+            className="product-form-input"
           />
         </Form.Item>
 
