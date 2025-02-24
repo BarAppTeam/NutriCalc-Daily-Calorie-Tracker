@@ -48,4 +48,3 @@ ProductList.propTypes = {
     onEdit: PropTypes.func.isRequired,
     onDelete: PropTypes.func.isRequired
 };
-

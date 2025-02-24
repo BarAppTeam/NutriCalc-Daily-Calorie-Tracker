@@ -1,6 +1,7 @@
 import React from 'react';
 import { Typography, Card } from 'antd';
 import PropTypes from 'prop-types';
+import './TotalCalories.css';
 
 const { Title } = Typography;
 

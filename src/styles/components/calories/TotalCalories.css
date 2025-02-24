@@ -1,0 +1,11 @@
+.total-calories-card {
+    max-width: 600px;
+    width: 100%;
+    margin: clamp(16px, 3vw, 24px) auto;
+}
+
+.total-calories-title {
+    font-size: clamp(1.2rem, 3vw, 1.5rem) !important;
+    margin: 0 !important;
+    text-align: center;
+}

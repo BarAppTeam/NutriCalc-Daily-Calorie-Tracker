@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Layout, Space, Button } from 'antd';
-import ProductForm from "./ProductForm"
-import ProductList from "./ProductList"
-import TotalCalories from "./TotalCalories"
+import ProductForm from './components/products/ProductForm';
+import ProductList from './components/products/ProductList';
+import TotalCalories from './components/calories/TotalCalories';
 import logo from "./assets/logo.jpeg"
 import './App.css';
 import './antd-custom.css';
