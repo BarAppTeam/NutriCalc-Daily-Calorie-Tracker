@@ -1,49 +1,77 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
+import { Form, Input, Button } from 'antd';
+import PropTypes from 'prop-types';
 
 export default function ProductForm({ onAdd }) {
-    const [formValues, setFormValues] = useState({});
+    const [form] = Form.useForm();
 
-    const updateFormValues = useCallback((key, value) => {
-        setFormValues(current => ({ ...current, [key]: value }))
-    }, []);
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        const totalCalories = (formValues.productAmount * formValues.caloriesPer100g) / 100;
+    const handleSubmit = (values) => {
+        const totalCalories = (values.productAmount * values.caloriesPer100g) / 100;
         const productId = Date.now();
-        const product = { ...formValues, totalCalories, productId };
+        const product = { ...values, totalCalories, productId };
 
         onAdd(product);
+        form.resetFields();
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input
-                id="productName"
-                type="text"
-                value={formValues.productName}
-                onChange={(e) => updateFormValues(e.target.id, e.target.value)}
-                placeholder="Product Name"
-                required
-            />
-            <input
-                id="productAmount"
-                type="number"
-                value={formValues.productAmount}
-                onChange={(e) => updateFormValues(e.target.id, Number(e.target.value))}
-                placeholder="Amount (in g)"
-                required
-            />
-            <input
-                id="caloriesPer100g"
-                type="number"
-                value={formValues.caloriesPer100g}
-                onChange={(e) => updateFormValues(e.target.id, Number(e.target.value))}
-                placeholder="Calories per 100g"
-                required
-            />
-            <button type="submit">Add Product</button>
-        </form>
+        <Form
+            form={form}
+            onFinish={handleSubmit}
+            layout="vertical"
+            className="product-form"
+            aria-label="Add product form"
+        >
+            <Form.Item
+                name="productName"
+                label="Product Name"
+                rules={[{ required: true, message: 'Please input the product name!' }]}
+            >
+                <Input 
+                    placeholder="Enter product name" 
+                    aria-label="Product name input"
+                />
+            </Form.Item>
+
+            <Form.Item
+                name="productAmount"
+                label="Amount (in g)"
+                rules={[{ required: true, message: 'Please input the amount!' }]}
+            >
+                <Input 
+                    type="number" 
+                    min={0} 
+                    placeholder="Enter amount in grams"
+                    aria-label="Product amount input"
+                />
+            </Form.Item>
+
+            <Form.Item
+                name="caloriesPer100g"
+                label="Calories per 100g"
+                rules={[{ required: true, message: 'Please input calories per 100g!' }]}
+            >
+                <Input 
+                    type="number" 
+                    min={0} 
+                    placeholder="Enter calories per 100g"
+                    aria-label="Calories per 100g input"
+                />
+            </Form.Item>
+
+            <Form.Item>
+                <Button 
+                    type="primary" 
+                    htmlType="submit"
+                    aria-label="Add product button"
+                >
+                    Add Product
+                </Button>
+            </Form.Item>
+        </Form>
     );
 }
+
+ProductForm.propTypes = {
+    onAdd: PropTypes.func.isRequired
+};

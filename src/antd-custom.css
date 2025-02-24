@@ -1,0 +1,171 @@
+/* Layout styles */
+.app-content {
+  padding: clamp(16px, 3vw, 24px);
+  min-height: 280px;
+  background: #fff;
+  margin: clamp(16px, 3vw, 24px);
+  border-radius: 8px;
+  max-width: 1200px;
+  width: calc(100% - clamp(32px, 6vw, 48px));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.app-title {
+  text-align: center;
+  padding: clamp(12px, 2vw, 16px);
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-title h1 {
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
+  margin: 0;
+}
+
+.app-logo {
+  height: clamp(40px, 6vw, 50px);
+  margin-right: clamp(8px, 1.5vw, 10px);
+  width: auto;
+}
+
+.app-actions {
+  margin-top: clamp(16px, 3vw, 24px);
+  display: flex;
+  justify-content: center;
+  gap: clamp(8px, 2vw, 16px);
+  flex-wrap: wrap;
+}
+
+.app-footer {
+  text-align: center;
+  padding: clamp(16px, 3vw, 24px);
+  font-size: clamp(0.875rem, 2vw, 1rem);
+}
+
+/* Product styles */
+.product-form {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto clamp(16px, 3vw, 24px);
+  padding: 0 clamp(8px, 2vw, 16px);
+}
+
+.product-card {
+  margin-bottom: clamp(12px, 2vw, 16px);
+}
+
+.product-info {
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  flex: 1;
+  min-width: 200px;
+}
+
+.total-calories-card {
+  max-width: 600px;
+  width: 100%;
+  margin: clamp(16px, 3vw, 24px) auto;
+}
+
+.total-calories-title {
+  font-size: clamp(1.2rem, 3vw, 1.5rem) !important;
+  margin: 0 !important;
+  text-align: center;
+}
+
+/* Ant Design overrides */
+.ant-layout {
+  min-height: 100vh;
+  background: #f0f2f5;
+}
+
+.ant-layout-header {
+  background: #fff;
+  height: auto;
+  line-height: 1.5;
+  padding: clamp(12px, 2vw, 16px);
+}
+
+.ant-card-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: clamp(8px, 2vw, 16px);
+  padding: clamp(12px, 2vw, 24px);
+}
+
+.ant-form-item {
+  margin-bottom: clamp(16px, 3vw, 24px);
+}
+
+.ant-input,
+/* Button styles */
+.ant-btn {
+  min-width: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 36px;
+  padding: 4px 15px;
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  transition: all 0.3s ease;
+}
+
+.product-card .ant-btn {
+  margin-left: 16px;
+  width: 120px;
+}
+
+.app-actions .ant-btn {
+  width: 250px;
+  height: 40px;
+}
+
+.ant-form-item-label > label {
+  font-size: clamp(0.875rem, 2vw, 1rem);
+}
+
+/* Responsive text */
+.ant-typography {
+  word-break: break-word;
+}
+
+/* Mobile optimizations */
+@media screen and (max-width: 480px) {
+  .ant-card-body {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .product-info {
+    text-align: center;
+  }
+
+  .ant-btn {
+    width: 100%;
+  }
+
+  .app-title .ant-space {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .app-logo {
+    margin-right: 0;
+    margin-bottom: clamp(8px, 2vw, 12px);
+  }
+}
+
+/* Tablet optimizations */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .ant-card-body {
+    gap: clamp(12px, 3vw, 20px);
+  }
+
+  .product-info {
+    min-width: 250px;
+  }
+}

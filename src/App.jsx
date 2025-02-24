@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { Layout, Space, Button } from 'antd';
 import ProductForm from "./ProductForm"
 import ProductList from "./ProductList"
 import TotalCalories from "./TotalCalories"
 import logo from "./assets/logo.jpeg"
 import './App.css';
+import './antd-custom.css';
+
+const { Header, Content, Footer } = Layout;
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -51,19 +55,41 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <div className="app-title">
-        <img src={logo} alt="NutriCalc Logo" className="app-logo" />
-        <h1>NutriCalc: Daily Calorie Tracker</h1>
-      </div>
-
-      <ProductForm onAdd={addOrUpdateProduct} />
-      <ProductList products={products} onEdit={addOrUpdateProduct} onDelete={deleteProduct} />
-      {products.length > 0 && <TotalCalories products={products} />}
-
-      <button id="shareSummary" disabled={!products.length} onClick={shareSummary}>Share Summary via WhatsApp</button>
-      <button id="clearAll" disabled={!products.length} onClick={clearAllProducts}>Clear All Products</button>
-    </div>
+    <Layout className="App">
+      <Header className="app-title">
+        <Space>
+          <img src={logo} alt="NutriCalc Logo" className="app-logo" />
+          <h1>NutriCalc: Daily Calorie Tracker</h1>
+        </Space>
+      </Header>
+      <Content className="app-content">
+        <ProductForm onAdd={addOrUpdateProduct} />
+        <ProductList products={products} onEdit={addOrUpdateProduct} onDelete={deleteProduct} />
+        {products.length > 0 && <TotalCalories products={products} />}
+        
+        <Space className="app-actions">
+          <Button 
+            type="primary" 
+            id="shareSummary" 
+            disabled={!products.length} 
+            onClick={shareSummary}
+          >
+            Share Summary via WhatsApp
+          </Button>
+          <Button 
+            danger 
+            id="clearAll" 
+            disabled={!products.length} 
+            onClick={clearAllProducts}
+          >
+            Clear All Products
+          </Button>
+        </Space>
+      </Content>
+      <Footer className="app-footer">
+        NutriCalc ©{new Date().getFullYear()} Created with Ant Design
+      </Footer>
+    </Layout>
   );
 }
 
