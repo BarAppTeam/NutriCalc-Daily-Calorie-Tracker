@@ -1,0 +1,34 @@
+{
+  "app": {
+    "title": "נוטריקלק: מעקב קלוריות יומי",
+    "footer": "נוטריקלק ©{year} נוצר עם Ant Design"
+  },
+  "product": {
+    "form": {
+      "title": "הוסף מוצר",
+      "name": "שם המוצר",
+      "name_placeholder": "הכנס שם מוצר",
+      "name_required": "אנא הכנס שם מוצר!",
+      "amount": "כמות (בקילוגרמים)",
+      "amount_placeholder":"הכנס כמות בקילוגרמים",
+      "amount_required": "אנא הכנס כמות!",
+      "calories": "קלוריות לקילוגרם",
+      "calories_placeholder": "הכנס קלוריות בקילוגרמים",
+      "calories_required": "אנא הכנס קלוריות בקילוגרמים",
+      "submit": "הוסף מוצר"
+    },
+    "list": {
+      "empty": "אין מוצרים עדיין. התחל על ידי הוספת המוצר הראשון שלך!",
+      "delete": "מחק"
+    }
+  },
+  "actions": {
+    "share": "שתף סיכום בוואטסאפ",
+    "clear": "נקה את כל המוצרים"
+  },
+  "summary": {
+    "title": "סיכום קלוריות מוצרים:",
+    "product_line": "{name}: {amount} קילוגרמים - {calories} קלוריות (סה''כ)",
+    "total": "סה''כ קלוריות: {calories}"
+  }
+}

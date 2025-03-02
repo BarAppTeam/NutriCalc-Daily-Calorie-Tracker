@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Layout, Space, Button } from 'antd';
+import { Layout, Space, Button, Select } from 'antd';
+import { LanguageProvider, useTranslation } from './contexts/LanguageContext';
 import ProductForm from './components/products/ProductForm';
 import ProductList from './components/products/ProductList';
 import TotalCalories from './components/calories/TotalCalories';
@@ -9,7 +10,8 @@ import './styles/antd-custom.css';
 
 const { Header, Content, Footer } = Layout;
 
-function App() {
+function AppContent() {
+  const { translate, language, changeLanguage } = useTranslation();
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -59,7 +61,15 @@ function App() {
       <Header className="app-title">
         <Space>
           <img src={logo} alt="NutriCalc Logo" className="app-logo" />
-          <h1>NutriCalc: Daily Calorie Tracker</h1>
+          <h1>{translate('app.title')}</h1>
+          <Select
+            value={language}
+            onChange={changeLanguage}
+            style={{ width: 120, marginLeft: 16 }}
+          >
+            <Select.Option value="en">English</Select.Option>
+            <Select.Option value="he">עברית</Select.Option>
+          </Select>
         </Space>
       </Header>
       <Content className="app-content">
@@ -74,7 +84,7 @@ function App() {
             disabled={!products.length} 
             onClick={shareSummary}
           >
-            Share Summary via WhatsApp
+            {translate('actions.share')}
           </Button>
           <Button 
             danger 
@@ -82,14 +92,22 @@ function App() {
             disabled={!products.length} 
             onClick={clearAllProducts}
           >
-            Clear All Products
+            {translate('actions.clear')}
           </Button>
         </Space>
       </Content>
       <Footer className="app-footer">
-        NutriCalc ©{new Date().getFullYear()} Created with Ant Design
+        {translate('app.footer').replace('{year}', new Date().getFullYear())}
       </Footer>
     </Layout>
+  );
+}
+
+function App() {
+  return (
+    <LanguageProvider>
+      <AppContent />
+    </LanguageProvider>
   );
 }
 

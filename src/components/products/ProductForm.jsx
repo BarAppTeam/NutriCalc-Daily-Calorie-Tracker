@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Form, Input, Button, InputNumber, Card } from 'antd';
 import PropTypes from 'prop-types';
+import { useTranslation } from '../../contexts/LanguageContext';
 import './ProductForm.css';
 
 function ProductForm({ onAdd }) {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
+  const { translate } = useTranslation();
 
   const onFinish = (values) => {
     setLoading(true);
@@ -29,35 +31,35 @@ function ProductForm({ onAdd }) {
         requiredMark="optional"
       >
         <Form.Item
-          label="Product Name"
+          label={translate('product.form.name')}
           name="productName"
-          rules={[{ required: true, message: 'Please input the product name!' }]}
+          rules={[{ required: true, message: translate('product.form.name_required') }]}
         >
-          <Input placeholder="Enter product name" />
+          <Input placeholder={translate('product.form.name_placeholder')} />
         </Form.Item>
 
         <Form.Item
-          label="Amount (kg)"
+          label={translate('product.form.amount')}
           name="productAmount"
-          rules={[{ required: true, message: 'Please input the amount!' }]}
+          rules={[{ required: true, message: translate('product.form.amount_required') }]}
         >
           <InputNumber
             min={0}
             step={0.1}
-            placeholder="Enter amount in kg"
+            placeholder={translate('product.form.amount_placeholder')}
             className="product-form-input"
           />
         </Form.Item>
 
         <Form.Item
-          label="Calories per kg"
+          label={translate('product.form.calories')}
           name="caloriesPerKg"
-          rules={[{ required: true, message: 'Please input calories per kg!' }]}
+          rules={[{ required: true, message: translate('product.form.calories_required') }]}
         >
           <InputNumber
             min={0}
             step={1}
-            placeholder="Enter calories per kg"
+            placeholder={translate('product.form.calories_placeholder')}
             className="product-form-input"
           />
         </Form.Item>
@@ -69,7 +71,7 @@ function ProductForm({ onAdd }) {
             loading={loading}
             block
           >
-            Add Product
+            {translate('product.form.submit')}
           </Button>
         </Form.Item>
       </Form>
