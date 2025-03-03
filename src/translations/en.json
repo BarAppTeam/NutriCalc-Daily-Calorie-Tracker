@@ -9,8 +9,8 @@
       "name": "Product Name",
       "name_placeholder": "Enter product name",
       "name_required": "Please input the product name!",
-      "amount": "Amount (kg)",
-      "amount_placeholder": "Enter amount in kg",
+      "amount": "Amount (g)",
+      "amount_placeholder": "Enter amount in g",
       "amount_required": "Please input the amount!",
       "calories": "Calories per kg",
       "calories_placeholder": "Enter calories per kg",
@@ -28,7 +28,7 @@
   },
   "summary": {
     "title": "Product Calorie Summary:",
-    "product_line": "{name}: {amount} kg - {calories} calories (total)",
+    "product_line": "{name}: {amount} g - {calories} calories (total)",
     "total": "Total Calories: {calories}"
   }
 }

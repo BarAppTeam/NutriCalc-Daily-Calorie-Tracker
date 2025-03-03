@@ -1,9 +1,9 @@
 import React from 'react';
 import { List, Empty } from 'antd';
-import { useTranslation} from "../../contexts/LanguageContext"
 import { ShoppingOutlined } from '@ant-design/icons';
 import ProductItem from './ProductItem';
 import PropTypes from 'prop-types';
+import { useTranslation } from '../../contexts/LanguageContext';
 import './ProductList.css';
 
 export default function ProductList({ products, onEdit, onDelete }) {

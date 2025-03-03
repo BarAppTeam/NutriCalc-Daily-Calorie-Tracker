@@ -28,7 +28,7 @@
   },
   "summary": {
     "title": "סיכום קלוריות מוצרים:",
-    "product_line": "{name}: {amount} קילוגרמים - {calories} קלוריות (סה''כ)",
+    "product_line": "{name}: {amount} גרמים - {calories} קלוריות (סה''כ)",
     "total": "סה''כ קלוריות: {calories}"
   }
 }

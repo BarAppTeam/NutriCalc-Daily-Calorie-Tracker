@@ -44,9 +44,12 @@ function AppContent() {
 
   const shareSummary = () => {
     const products = JSON.parse(localStorage.getItem('products')) || [];
-    let summary = 'Product Calorie Summary:\n';
+    let summary = translate('summary.title') + '\n';
     products.forEach(product => {
-      summary += `${product.productName}: ${product.productAmount} kg - ${product.totalCalories} calories (total)\n`;
+      summary += translate('summary.product_line')
+        .replace('{name}', product.productName)
+        .replace('{amount}', product.productAmount)
+        .replace('{calories}', product.totalCalories) + '\n';
     });
     const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(summary)}`;
     window.open(whatsappUrl, '_blank');

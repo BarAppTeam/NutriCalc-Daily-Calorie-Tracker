@@ -3,10 +3,12 @@ import { Card, Button, Typography, Space } from 'antd';
 import PropTypes from 'prop-types';
 import StringBuilder from '../../utils/StringBuilder';
 import '../../styles/components/products/ProductItem.css';
+import { useTranslation } from '../../contexts/LanguageContext';
 
 const { Text } = Typography;
 
 function ProductItem({ product, onDelete }) {
+  const { translate } = useTranslation();
   const { productName, productAmount, totalCalories, productId } = product;
   const handleDelete = () => onDelete(productId);
 
@@ -19,7 +21,7 @@ function ProductItem({ product, onDelete }) {
       <Space direction="vertical" size="small" className="product-info">
         <Text strong>{productName}</Text>
         <Text type="secondary">
-          {new StringBuilder().formatProductInfo(productName, productAmount, totalCalories)}
+          {translate('summary.product_line').replace("{name}", productName).replace("{amount}", productAmount).replace("{calories}", totalCalories.toFixed(2))}
         </Text>
       </Space>
       <Button
@@ -31,7 +33,7 @@ function ProductItem({ product, onDelete }) {
         shape="round"
         className="delete-button"
       >
-        Delete
+        {translate('product.list.delete')}
       </Button>
     </Card>
   );
