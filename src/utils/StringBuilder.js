@@ -8,10 +8,6 @@ class StringBuilder {
         return this;
     }
 
-    formatProductInfo(productName, productAmount, totalCalories) {
-        return `${productName}: ${productAmount} g - ${totalCalories.toFixed(2)} calories (total)`;
-    }
-
     toString() {
         return this.buffer.join('');
     }
