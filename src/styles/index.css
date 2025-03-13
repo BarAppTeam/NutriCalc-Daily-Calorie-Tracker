@@ -1,9 +1,24 @@
+/* Global styles */
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #F8F9FA;
   color: #212529;
   margin: 0;
   padding: 20px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reset default styles */
+* {
+  box-sizing: border-box;
+}
+
+/* Base typography */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
 }
 
 h1,
@@ -11,6 +26,7 @@ h2 {
   color: #007BFF;
 }
 
+/* Form styles */
 form {
   background-color: #FFFFFF;
   padding: 20px;
@@ -43,4 +59,28 @@ button:disabled {
 
 button:hover {
   background-color: #0056b3;
+}
+
+/* Ensure images are responsive by default */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Remove default list styles */
+ul, ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Basic link styles */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
 }

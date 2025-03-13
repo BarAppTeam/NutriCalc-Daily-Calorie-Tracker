@@ -1,11 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import ProductForm from "./ProductForm"
-import ProductList from "./ProductList"
-import TotalCalories from "./TotalCalories"
+import { Layout, Space, Button, Select } from 'antd';
+import { LanguageProvider, useTranslation } from './contexts/LanguageContext';
+import ProductForm from './components/products/ProductForm';
+import ProductList from './components/products/ProductList';
+import TotalCalories from './components/calories/TotalCalories';
 import logo from "./assets/logo.jpeg"
-import './App.css';
+import './styles/App.css';
+import './styles/antd-custom.css';
+import { ConfigProvider } from 'antd';
+import {AppHeader} from "./components/AppHeader"
+import { AppFooter } from './components/AppFooter/AppFooter';
 
-function App() {
+const { Header, Content, Footer } = Layout;
+
+function AppContent() {
+  const { translate, language, changeLanguage } = useTranslation();
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -38,9 +47,12 @@ function App() {
 
   const shareSummary = () => {
     const products = JSON.parse(localStorage.getItem('products')) || [];
-    let summary = 'Product Calorie Summary:\n';
+    let summary = translate('summary.title') + '\n';
     products.forEach(product => {
-      summary += `${product.productName}: ${product.productAmount} kg - ${product.totalCalories} calories (total)\n`;
+      summary += translate('summary.product_line')
+        .replace('{name}', product.productName)
+        .replace('{amount}', product.productAmount)
+        .replace('{calories}', product.totalCalories) + '\n';
     });
     const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(summary)}`;
     window.open(whatsappUrl, '_blank');
@@ -51,19 +63,44 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <div className="app-title">
-        <img src={logo} alt="NutriCalc Logo" className="app-logo" />
-        <h1>NutriCalc: Daily Calorie Tracker</h1>
-      </div>
+    <Layout className="App">
+      <AppHeader/>
+      <Content className="app-content">
+        <ProductForm onAdd={addOrUpdateProduct} />
+        <ProductList products={products} onEdit={addOrUpdateProduct} onDelete={deleteProduct} />
+        {products.length > 0 && <TotalCalories products={products} />}
 
-      <ProductForm onAdd={addOrUpdateProduct} />
-      <ProductList products={products} onEdit={addOrUpdateProduct} onDelete={deleteProduct} />
-      {products.length > 0 && <TotalCalories products={products} />}
+        <Space className="app-actions">
+          <Button
+            type="primary"
+            id="shareSummary"
+            disabled={!products.length}
+            onClick={shareSummary}
+          >
+            {translate('actions.share')}
+          </Button>
+          <Button
+            danger
+            id="clearAll"
+            disabled={!products.length}
+            onClick={clearAllProducts}
+          >
+            {translate('actions.clear')}
+          </Button>
+        </Space>
+      </Content>
+      <AppFooter/>      
+    </Layout>
+  );
+}
 
-      <button id="shareSummary" disabled={!products.length} onClick={shareSummary}>Share Summary via WhatsApp</button>
-      <button id="clearAll" disabled={!products.length} onClick={clearAllProducts}>Clear All Products</button>
-    </div>
+function App() {
+  return (
+    <ConfigProvider theme={{ hashed: false }}>
+      <LanguageProvider>
+        <AppContent />
+      </LanguageProvider>
+    </ConfigProvider>
   );
 }
 

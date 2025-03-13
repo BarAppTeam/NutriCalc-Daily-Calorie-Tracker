@@ -1,0 +1,34 @@
+{
+  "app": {
+    "title": "NutriCalc: Daily Calorie Tracker",
+    "footer": "NutriCalc ©{year} Created with Ant Design"
+  },
+  "product": {
+    "form": {
+      "title": "Add Product",
+      "name": "Product Name",
+      "name_placeholder": "Enter product name",
+      "name_required": "Please input the product name!",
+      "amount": "Amount (g)",
+      "amount_placeholder": "Enter amount in g",
+      "amount_required": "Please input the amount!",
+      "calories": "Calories per kg",
+      "calories_placeholder": "Enter calories per kg",
+      "calories_required": "Please input calories per kg!",
+      "submit": "Add Product"
+    },
+    "list": {
+      "empty": "No products added yet. Start by adding your first product!",
+      "delete": "Delete"
+    }
+  },
+  "actions": {
+    "share": "Share Summary via WhatsApp",
+    "clear": "Clear All Products"
+  },
+  "summary": {
+    "title": "Product Calorie Summary:",
+    "product_line": "{name}: {amount} g - {calories} calories (total)",
+    "total": "Total Calories: {calories}"
+  }
+}
