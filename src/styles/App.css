@@ -40,7 +40,7 @@
   background-color: #5a6268;
 }
 
-.app-title h1 {
+.app-header-title h1 {
   font-size: 2.5rem;
   color: #007BFF; /* Primary color */
   text-align: center;
@@ -59,7 +59,7 @@
   }
 }
 
-.app-title {
+.app-header-title {
   animation: fadeIn 1s ease-out;
 }
 
