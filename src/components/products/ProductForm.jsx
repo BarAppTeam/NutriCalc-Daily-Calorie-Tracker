@@ -22,13 +22,14 @@ function ProductForm({ onAdd }) {
   };
 
   return (
-    <Card className="product-form">
+    <Card className="product-form-card">
       <Form
         form={form}
         name="productForm"
         onFinish={onFinish}
         layout="vertical"
         requiredMark="optional"
+        className="product-form-container"
       >
         <Form.Item
           label={translate('product.form.name')}
