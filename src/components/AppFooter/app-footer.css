@@ -1,0 +1,5 @@
+.app-footer {
+    text-align: center;
+    padding: clamp(16px, 3vw, 24px);
+    font-size: clamp(0.875rem, 2vw, 1rem);
+  }
