@@ -7,6 +7,9 @@ import TotalCalories from './components/calories/TotalCalories';
 import logo from "./assets/logo.jpeg"
 import './styles/App.css';
 import './styles/antd-custom.css';
+import { ConfigProvider } from 'antd';
+import {AppHeader} from "./components/AppHeader"
+import { AppFooter } from './components/AppFooter/AppFooter';
 
 const { Header, Content, Footer } = Layout;
 
@@ -61,56 +64,43 @@ function AppContent() {
 
   return (
     <Layout className="App">
-      <Header className="app-title">
-        <Space>
-          <img src={logo} alt="NutriCalc Logo" className="app-logo" />
-          <h1>{translate('app.title')}</h1>
-          <Select
-            value={language}
-            onChange={changeLanguage}
-            style={{ width: 120, marginLeft: 16 }}
-          >
-            <Select.Option value="en">English</Select.Option>
-            <Select.Option value="he">עברית</Select.Option>
-          </Select>
-        </Space>
-      </Header>
+      <AppHeader/>
       <Content className="app-content">
         <ProductForm onAdd={addOrUpdateProduct} />
         <ProductList products={products} onEdit={addOrUpdateProduct} onDelete={deleteProduct} />
         {products.length > 0 && <TotalCalories products={products} />}
-        
+
         <Space className="app-actions">
-          <Button 
-            type="primary" 
-            id="shareSummary" 
-            disabled={!products.length} 
+          <Button
+            type="primary"
+            id="shareSummary"
+            disabled={!products.length}
             onClick={shareSummary}
           >
             {translate('actions.share')}
           </Button>
-          <Button 
-            danger 
-            id="clearAll" 
-            disabled={!products.length} 
+          <Button
+            danger
+            id="clearAll"
+            disabled={!products.length}
             onClick={clearAllProducts}
           >
             {translate('actions.clear')}
           </Button>
         </Space>
       </Content>
-      <Footer className="app-footer">
-        {translate('app.footer').replace('{year}', new Date().getFullYear())}
-      </Footer>
+      <AppFooter/>      
     </Layout>
   );
 }
 
 function App() {
   return (
-    <LanguageProvider>
-      <AppContent />
-    </LanguageProvider>
+    <ConfigProvider theme={{ hashed: false }}>
+      <LanguageProvider>
+        <AppContent />
+      </LanguageProvider>
+    </ConfigProvider>
   );
 }
 
